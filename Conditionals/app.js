@@ -1,4 +1,4 @@
-//null is the absence of value
+/* //null is the absence of value
 let f = null;
 
 //undefined
@@ -61,4 +61,17 @@ function enter(hasKey, hasMagic, is Banned) {
    if((hasKey === true || has Magic === true) && !isBanned) {
     console.log("you're princess ")
    }
-}
+} */
+
+const london = {
+    firstName: "London",
+    lastName: "Valentine",
+    graduated: false, 
+    DOB: 2010,
+    siblings: ["Paris", "Rio"],
+    age: function(){
+        return year - this.DOB;
+    },
+};
+
+london.siblings.includes("Paris")
