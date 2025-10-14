@@ -1,16 +1,3 @@
-function addToCart(){
-    const buttons = document.querySelectorAll("button");
-    //crete array if we need more than forEach
-    const btnArray = Array.from(buttons);
-    btnArray.forEach((btn) => 
-        btn.addEventListener("click", function (event){
-            console.log(event.target.textContent);
-            console.log(event.target.closest(".display-card").getAttribute("data-title")
-            );
-        }) 
-    );
-}
-addToCart();
 
 const blindboxs = [
   {
@@ -160,4 +147,18 @@ function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML("afterbegin", `<h1>${item.name}</h1>`);
 }
-products.forEach((product) => inject(product))
+blindboxs.forEach((product) => inject(product))
+/* function addToCart(){
+    const buttons = document.querySelectorAll("button");
+    //crete array if we need more than forEach
+    const btnArray = Array.from(buttons);
+    btnArray.forEach((btn) => 
+        btn.addEventListener("click", function (event){
+            console.log(event.target.textContent);
+            console.log(event.target.closest(".display-card").getAttribute("data-title")
+            );
+        }) 
+    );
+}
+addToCart();
+ */
