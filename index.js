@@ -1,5 +1,4 @@
-
-const blindboxs = [
+const blindboxes = [
   {
     name: "Light Balloon",
     price: "$19.99",
@@ -143,11 +142,11 @@ const blindboxs = [
 ];
 
 function inject(item) {
-
   const container = document.querySelector(".container");
   container.insertAdjacentHTML("afterbegin", `<h1>${item.name}</h1>`);
 }
-blindboxs.forEach((product) => inject(product))
+blindboxes.forEach((product) => inject(product));
+
 /* function addToCart(){
     const buttons = document.querySelectorAll("button");
     //crete array if we need more than forEach
