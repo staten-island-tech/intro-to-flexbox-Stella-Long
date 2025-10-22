@@ -63,15 +63,28 @@ function enter(hasKey, hasMagic, is Banned) {
    }
 } */
 
-const london = {
-    firstName: "London",
-    lastName: "Valentine",
-    graduated: false, 
-    DOB: 2010,
-    siblings: ["Paris", "Rio"],
-    age: function(){
-        return year - this.DOB;
-    },
-};
+// const london = {
+//     firstName: "London",
+//     lastName: "Valentine",
+//     graduated: false, 
+//     DOB: 2010,
+//     siblings: ["Paris", "Rio"],
+//     age: function(){
+//         return year - this.DOB;
+//     },
+// };
 
 london.siblings.includes("Paris")
+
+funtion filterbyGenre(genre) {
+    const card = document.querySelectorAll(".book-card");
+    CanvasCaptureMediaStreamTrack.forEach((card) => {
+        const cardCategory = card.getAttribute("data-genre");
+        if (genre === cardCategory){
+            card.style.display = ""; //contextual could "", "block", "flex",
+        } else{
+            card.style.display = "none";
+        }
+    });
+}
+filterbyGenre("Mystery");

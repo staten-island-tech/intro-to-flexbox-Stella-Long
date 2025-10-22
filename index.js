@@ -88,42 +88,42 @@ const blindboxes = [
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle The Gifts From Stars Series Figures",
-    img: "https://prod-america-res.popmart.com/default/20241205_190000_800277____2_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg?x-oss-process=image/format,webp",
+    img: "https://prod-america-res.popmart.com/default/20241205_190000_800277____2_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg",
   },
   {
     name: "Star Apple",
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle The Gifts From Stars Series Figures",
-    img: "https://images.stockx.com/images/Pop-Mart-Twinkle-Twinkle-The-Gifts-From-Stars-Series-Star-Apple-Figure.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&q=60&dpr=1&trim=color&updated_at=1750192704",
+    img: "https://prod-america-res.popmart.com/default/20241205_190000_605800____9_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg",
   },
   {
     name: "Star Jar",
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle The Gifts From Stars Series Figures",
-    img: "https://images.stockx.com/images/Pop-Mart-Twinkle-Twinkle-The-Gifts-From-Stars-Series-Star-Jar-Figure.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1750192748",
+    img: "https://prod-america-res.popmart.com/default/20241205_190000_736177____7_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg",
   },
   {
     name: "Happy Trumpeter",
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle The Gifts From Stars Series Figures",
-    img: "https://images.stockx.com/images/Pop-Mart-Twinkle-Twinkle-The-Gifts-From-Stars-Series-Happy-Trumpeter-Figure.jpg?fit=fill&bg=FFFFFF&w=480&h=320&q=60&dpr=1&trim=color&updated_at=1750192754",
+    img: "https://prod-america-res.popmart.com/default/20241205_190000_314458____5_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg",
   },
   {
     name: "Lovely Puppy",
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle The Gifts From Stars Series Figures",
-    img: "https://images.stockx.com/images/Pop-Mart-Twinkle-Twinkle-The-Gifts-From-Stars-Series-Lovely-Puppy-Figure.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1750192727",
+    img: "https://prod-america-res.popmart.com/default/20241205_190000_522366____8_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg",
   },
   {
     name: "A Big Hug",
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle The Gifts From Stars Series Figures",
-    img: "https://images.stockx.com/images/Pop-Mart-Twinkle-Twinkle-The-Gifts-From-Stars-Series-A-Big-Hug-Figure.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1750192761",
+    img: "https://prod-america-res.popmart.com/default/20241205_190000_455951____1_twinkle-twinkle-the-gifts-from-stars-series-figures_blind-boxes_details_popmart-us_____1200x1200.jpg",
   },
   {
     name: "Fortune Cookies",
@@ -143,7 +143,20 @@ const blindboxes = [
 
 function inject(item) {
   const container = document.querySelector(".container");
-  container.insertAdjacentHTML("afterbegin", `<h1>${item.name}</h1>`);
+  container.insertAdjacentHTML(
+    "afterbegin",
+    ` <div class="card">
+        <img
+          class="img"
+          src="${item.img}"
+          alt="Twinkle Twinkle Blindboxes"
+        />
+        <h2 class="product__category">${item.series}</h2>
+        <h3 class="product__name">${item.name}</h3>
+        <p class="product__price">${item.price}</p>
+        <button class="purchase__product">Add to Cart</button>
+      </div>`
+  );
 }
 blindboxes.forEach((product) => inject(product));
 
@@ -151,12 +164,12 @@ blindboxes.forEach((product) => inject(product));
     const buttons = document.querySelectorAll("button");
     //crete array if we need more than forEach
     const btnArray = Array.from(buttons);
-    btnArray.forEach((btn) => 
+    btnArray.forEach((btn) =>
         btn.addEventListener("click", function (event){
             console.log(event.target.textContent);
             console.log(event.target.closest(".display-card").getAttribute("data-title")
             );
-        }) 
+        })
     );
 }
 addToCart();
