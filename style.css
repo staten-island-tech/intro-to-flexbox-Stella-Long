@@ -49,10 +49,11 @@ body {
   margin: 0;
   padding: 10px;
   float: right;
+  align-items: center;
 }
 
 .product__name {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-top: 2rem;
   align-items: center;
 }
@@ -76,8 +77,9 @@ body {
   margin-top: 15px;
   margin-right: 15px;
   margin-bottom: 0px;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   border-color: rgb(38, 81, 119);
+  align-items: center;
 }
 
 .img {

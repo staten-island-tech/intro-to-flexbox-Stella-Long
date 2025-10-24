@@ -60,7 +60,7 @@ const blindboxes = [
     price: "$19.99",
     inStock: true,
     series: "Twinkle Twinkle Be a Little Star Series Figures",
-    img: "https://images.stockx.com/images/Pop-Mart-Twinkle-Twinkle-Be-a-Little-Star-Series-Teeter-totter-Figure.jpg?fit=fill&bg=FFFFFF&w=480&h=320&q=60&dpr=1&trim=color&updated_at=1750192790",
+    img: "https://down-ph.img.susercontent.com/file/sg-11134201-7reo0-m8liktkxuf0x0c",
   },
   {
     name: "Banana Split",
@@ -160,17 +160,20 @@ function inject(item) {
 }
 blindboxes.forEach((product) => inject(product));
 
-/* function addToCart(){
-    const buttons = document.querySelectorAll("button");
-    //crete array if we need more than forEach
-    const btnArray = Array.from(buttons);
-    btnArray.forEach((btn) =>
-        btn.addEventListener("click", function (event){
-            console.log(event.target.textContent);
-            console.log(event.target.closest(".display-card").getAttribute("data-title")
-            );
-        })
-    );
+function addToCart() {
+  const buttons = document.querySelectorAll("button");
+  //crete array if we need more than forEach
+  const btnArray = Array.from(buttons);
+
+  btnArray.forEach((btn) =>
+    btn.addEventListener("click", function (event) {
+      const card = event.target.closest(".card");
+      console.log(event.target.textContent);
+      console.log(event.target.closest(".card").getAttribute("product__name"));
+    })
+  );
 }
+
 addToCart();
- */
+
+displayCart();
