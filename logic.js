@@ -5,7 +5,7 @@ let prod = {
     year: ,
 };
 const cart = []
-function createCartObject(product){
+function createCartObject(prod){
     const cartProduct = {...prod, quantity: 1 };
 }
 
@@ -21,5 +21,6 @@ function checkCart(prod){
         cart.push(cartProduct);
     }
 }
+
 checkCart(prod);
 console.log(cart);
