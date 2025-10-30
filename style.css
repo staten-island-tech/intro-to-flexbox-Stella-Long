@@ -41,7 +41,7 @@ body {
   font-size: 10rem;
   font-weight: 150;
   background-color: rgb(38, 81, 119);
-  margin: 40rem auto;
+  margin: 5rem auto;
 }
 
 .product__category {
@@ -81,6 +81,9 @@ body {
   border-color: rgb(38, 81, 119);
   align-items: center;
 }
+.purchase__product button:hover {
+  background-color: rgb(255, 235, 123);
+}
 
 .img {
   width: 100%;
@@ -91,4 +94,22 @@ body {
   .card {
     width: 100%;
   }
+}
+
+.filter button {
+  font-size: 1.5rem;
+  background-color: rgb(255, 241, 163);
+  color: rgb(38, 81, 119);
+  font-family: "Palette Mosaic", system-ui;
+  padding: 10px;
+  line-height: 1rem;
+  margin: 15px 15px 0 0;
+  border-radius: 1rem;
+  border: 1px solid rgb(38, 81, 119);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter button:hover {
+  background-color: rgb(255, 235, 123);
 }

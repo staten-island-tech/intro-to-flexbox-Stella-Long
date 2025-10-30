@@ -157,7 +157,7 @@ function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
     "afterbegin",
-    `<div class="card">
+    `<div class="card" data-series = "${item.series}">
         <img
           class="img"
           src="${item.img}"
@@ -171,64 +171,47 @@ function inject(item) {
   );
 }
 blindboxes.forEach((product) => inject(product));
+
+function filterBySeries(series) {
+  document.querySelectorAll(".card").forEach((card) => {
+    const cardSeries = card.getAttribute("data-series");
+    card.style.display = cardSeries === series || series === "all" ? "inline-block" : "none";
+  });
+}
+
+document.querySelector(".a").addEventListener("click", () => filterBySeries("all"));
+document.querySelector(".b").addEventListener("click", () => filterBySeries("Twinkle Twinkle The Gifts From Stars Series Figures"));
+document.querySelector(".c").addEventListener("click", () => filterBySeries("Twinkle Twinkle Be a Little Star Series Figures"));
+
 let cart = [];
-function addToCart() {
-  const buttons = document.querySelectorAll("button");
-  //crete array if we need more than forEach
-  const btnArray = Array.from(buttons);
 
-  btnArray.forEach((btn) =>
-    btn.addEventListener("click", function (event) {
+function totalPrice() {
+  let total = 0;
+  cart.forEach((price) => total += price);
+  document.querySelector(".total").textContent = `Total: $${total}`;
+}
+
+
+function addtoCart() {
+  const cartButtons = document.querySelectorAll(".purchase__product");
+  const list = document.querySelector(".items");
+
+  cartButtons.forEach((button) =>
+    button.addEventListener("click", function (event) {
       const card = event.target.closest(".card");
-      const name = document.querySelector(".name").textContent;
-      const priceText = card
-        .querySelector(".price")
-        .textContent.replace("$", "");
-      const price = parseFloat(priceText);
-      const imgScr = card.querySelector("img").scr;
+      const cardPriceText = card.querySelector(".product__price").textContent;
+      const cardPrice = parseFloat(cardPriceText.replace("$", ""));
+      const cardName = card.querySelector(".product__name").textContent;
 
-      const item = { name, price, imgScr, quantity: 1 };
-      const existing = cart.find((blindboxes) => blindboxes.name === name);
+      cart.push(cardPrice);
 
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push(item);
-      }
-      displayCart();
-      showCart();
+      list.insertAdjacentHTML("beforeend",
+        `<li>${cardName} - $${cardPrice}</li>`
+      );
+
+      totalPrice();
     })
   );
 }
 
-addToCart();
-
-function displayCart() {
-  const card = document.querySelector(".card");
-  const totalDisplay = document.querySelector("cart-total");
-  const itemCount = document.querySelector("item-count");
-
-  let subtotal = 0;
-  let totalItems = 0;
-
-  cart.forEach((item) => {
-    const itemTotal = item.price * item.quantity;
-    subtotal += itemTotal;
-    totalItems += item.quantity;
-
-    cartContainer.insertAdjacentHTML("beforeend"),
-      `
-    <div class="cart__item">
-      <h1>${item.name}</h1>
-      <h2>${item.quantity}</h2>
-      <h2>${item.price}</h2>
-    </div>
-  `;
-    totalDisplay.textContent = subtotal;
-    itemCount.textContent = `${totalItems} ${
-      totalItems === 1 ? "Item" : "Item"
-    }`;
-  });
-}
-
-displayCart();
+addtoCart();
