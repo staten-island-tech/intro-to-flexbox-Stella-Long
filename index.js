@@ -141,11 +141,23 @@ const blindboxes = [
   },
 ];
 
+// const DOMSelectors = {
+//   name: document.getElementById("name"),
+//   price: document.getElementById("price"),
+//   series: document.getElementById("series"),
+//   img: document.getElementById("img"),
+
+//   container: document.querySelector(".container"),
+//   allBtn: document.querySelector(".all"),
+//   TheGiftsFromStarsBtn: document.querySelector(".gift"),
+//   BeaLittleStar: document.querySelector(".little"),
+// };
+
 function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
     "afterbegin",
-    ` <div class="card">
+    `<div class="card">
         <img
           class="img"
           src="${item.img}"
@@ -159,7 +171,7 @@ function inject(item) {
   );
 }
 blindboxes.forEach((product) => inject(product));
-
+let cart = [];
 function addToCart() {
   const buttons = document.querySelectorAll("button");
   //crete array if we need more than forEach
@@ -168,7 +180,7 @@ function addToCart() {
   btnArray.forEach((btn) =>
     btn.addEventListener("click", function (event) {
       const card = event.target.closest(".card");
-      const name = card.querySelector(".name").textContent;
+      const name = document.querySelector(".name").textContent;
       const priceText = card
         .querySelector(".price")
         .textContent.replace("$", "");
@@ -192,14 +204,14 @@ function addToCart() {
 addToCart();
 
 function displayCart() {
-  const cartContainer = document.querySelector(".card");
+  const card = document.querySelector(".card");
   const totalDisplay = document.querySelector("cart-total");
   const itemCount = document.querySelector("item-count");
 
   let subtotal = 0;
   let totalItems = 0;
 
-  cartContainer.forEach((item) => {
+  cart.forEach((item) => {
     const itemTotal = item.price * item.quantity;
     subtotal += itemTotal;
     totalItems += item.quantity;
@@ -209,10 +221,10 @@ function displayCart() {
     <div class="cart__item">
       <h1>${item.name}</h1>
       <h2>${item.quantity}</h2>
-      <h2>${item.price.toFixed(2)}</h2>
+      <h2>${item.price}</h2>
     </div>
   `;
-    totalDisplay.textContent = subtotal.toFixed(2);
+    totalDisplay.textContent = subtotal;
     itemCount.textContent = `${totalItems} ${
       totalItems === 1 ? "Item" : "Item"
     }`;
